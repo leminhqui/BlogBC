@@ -1,0 +1,55 @@
+.modalTipContain{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    background-color: #00000091;
+    z-index: 1;
+}
+.modalContainer{
+    background-color: #8199ad;
+    padding: 20px;
+    border: solid;
+    width: 500px;
+    height: 200px;
+    margin: auto;
+    margin-top: 20%;
+}
+
+.tipInput{
+    border-radius: 5px;
+    width: 100%;
+    line-height: 30px;
+    border: none;
+    padding: 0px 10px;
+    box-sizing: border-box;
+    margin: 30px 0px;
+}
+
+.modalButtonContain{
+    text-align: right;
+}
+
+.tipSend, .tipCancel{
+    min-width: 100px;
+    line-height: 25px;
+    border: none;
+    border-radius: 10px;
+    font-size: 20px;
+    font-weight: 800;
+    background-color: #336dff;
+}
+
+.tipSend:hover{
+    opacity: 0.8;
+    cursor: pointer;
+
+}
+.tipCancel:hover{
+    opacity: 0.8;
+    cursor: pointer;
+
+}
+
+.tipCancel{
+    margin-left: 10px;
+}
