@@ -5,7 +5,10 @@ contract BlogNetwork {
   string public name;
   address public owner;
   uint public postCount = 0;
+  uint public accountCount = 0;
   mapping(uint => Post) public posts;
+  mapping(uint => Account) public account;
+
 
   struct Post {
     uint id;
@@ -14,6 +17,7 @@ contract BlogNetwork {
     string content;
     uint tipAmount;
     address payable author;
+    uint createtime;
   }
 
 
@@ -23,7 +27,8 @@ contract BlogNetwork {
     string title,
     string content,
     uint tipAmount,
-    address payable author
+    address payable author,
+    uint createtime
   );
 
   event PostTipped(
@@ -52,6 +57,10 @@ contract BlogNetwork {
       owner = msg.sender;
       name = "Blockchain Blog";
   }
+   function getOwner() public view returns (address)
+    {
+        return owner;
+    }
   function createPost(string memory _imgHash, string memory _title, string memory _content) public {
       // Require valid content
         require(bytes(_content).length > 0);
@@ -62,11 +71,10 @@ contract BlogNetwork {
       // Increment the post count
         postCount ++;
       // Create the post
-        posts[postCount] = Post(postCount,_imgHash,_title, _content, 0, msg.sender);
+        posts[postCount] = Post(postCount,_imgHash,_title, _content, 0, msg.sender,block.timestamp);
       // Trigger event
-        emit PostCreated(postCount,_imgHash,_title, _content, 0, msg.sender);
+        emit PostCreated(postCount,_imgHash,_title, _content, 0, msg.sender,block.timestamp);
     }
-
 
   function tipPost(uint _id) public payable {
   // Make sure the id is valid  
@@ -129,6 +137,60 @@ contract BlogNetwork {
     delete posts[_id];
     emit PostDelete(_id);
   }
+
+
+  struct Account {
+    uint id;
+    string hash;
+    string name;
+    string email;
+    address payable author;
+    uint createtime;
+  }
+
+
+  event AccountCreated(
+    uint id,
+    string hash,
+    string name,
+    string email,
+    address payable author,
+    uint createtime
+  );
+
+  event AccountUpdated(
+    uint id,
+    string hash,
+    string name,
+    string email
+  );
+
+    function createAccount(string memory _imgHash, string memory _name, string memory _email) public {
+      // Require valid content
+        require(bytes(_name).length > 0);
+      // make sure img hash exists
+        require(bytes(_imgHash).length > 0);
+      //make sure uploader address exists
+        require(msg.sender != address(0x0));
+      // Increment the post count
+        accountCount ++;
+      // Create the post
+        account[accountCount] = Account(accountCount,_imgHash,_name, _email, msg.sender,block.timestamp);
+      // Trigger event
+        emit AccountCreated(accountCount,_imgHash,_name, _email,msg.sender,block.timestamp);
+    }
+    function updateAccount(uint _id,string memory _imgHash, string memory _name, string memory _email) public payable {
+    // Make sure the id is valid  
+    require(_id > 0 && _id <= accountCount);
+    // Fetch the post
+    Account memory _account = account[_id];
+    _account.hash = _imgHash;
+    _account.name = _name;
+    _account.email = _email;
+    account[_id] = _account;
+    emit AccountUpdated(_id,_imgHash,_name, _email);
+  }
 }
 
+  
 
