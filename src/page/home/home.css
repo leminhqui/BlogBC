@@ -5,13 +5,17 @@
     margin-left: 6px;
     position: relative;
 }
-.post{
-    /* width: 455px; */
-    margin: 0px 20px 20px 15px;
+.post-home-container{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+.post-home{
+    width: 458px;
+    margin: 16px;
     border: #444;
-    max-width: 440px;
+    max-width: 474px;
     max-height: 485px;
-    margin-top: 50px;
     padding: 10px;
     box-shadow: 0px 0px 5px 0px;
     cursor: pointer;
@@ -37,8 +41,9 @@
 .accountImg{
     width: 100%;
 }
-.accountAddress{
-    max-width: 335px;
+.accountAddress.home{
+    font-size: 20px;
+    text-align: left;
 }
 
 
@@ -97,4 +102,10 @@
 .tipAction:hover{
     box-shadow: 0px 0px 5px 0px rgb(51, 63, 236);
     border-radius: 5px;
+}
+.filter-home{
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 15px;
+    font-size: 20px;
 }
