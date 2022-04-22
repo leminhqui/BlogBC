@@ -1,11 +1,5 @@
 .MyPosts{
-    min-height: 100vh;
-    width: 99%;
-    margin-top: 10px;
-    flex: 9;
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: 6px;
+    flex: 9 1;
 }
 
 .post{
@@ -95,4 +89,24 @@
     text-decoration: underline;
     font-family: 'Varela Round', sans-serif;
 
+}
+.filter-mypost{
+    margin-top: 20px;
+    margin-left: 15px;
+    font-size: 20px;
+}
+.myposts-container{
+    display: flex;
+    flex-wrap: wrap;
+}
+.myposts-container .post{
+    width: 458px;
+    margin: 16px;
+    border: #444;
+    max-width: 474px;
+    max-height: 485px;
+    padding: 10px;
+    box-shadow: 0px 0px 5px 0px;
+    cursor: pointer;
+    border-radius: 5px;
 }
