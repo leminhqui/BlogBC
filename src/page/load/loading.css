@@ -2,6 +2,8 @@
   position: relative;
   height: 100vh;
   overflow-y: hidden;
+  background: linear-gradient(180deg, rgb(213 211 255) 0%, rgb(107, 146, 223) 25%, rgb(36, 218, 176) 100%);
+
 }
 
 .outer,
